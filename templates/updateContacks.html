@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>更新联系人页面</title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="../../static/js/addContacts.js"></script>
+</head>
+<body background="../../static/img/updateBackgroiund.jpg">
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>请修改：</h1>
+            <hr>
+            <form action="/update/" method="POST">
+                {% csrf_token %}
+
+                <input type="hidden" name="id" value="{{ contack.id }}">
+
+                <div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input type="text" class="form-control" value="{{ contack.name }}" name="name" onblur="valiname()">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">电话</span>
+                    <input type="text" class="form-control" value="{{ contack.phone }}" name="phone"  id="telephoneid" onblur="isTelOrMobile(document.getElementById('telephoneid').value)">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">邮箱</span>
+                    <input type="text" class="form-control" value="{{ contack.email }}" name="email" onblur="valiemailForm()">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">住址</span>
+                    <input type="text" class="form-control" value="{{ contack.address }}"  name="address" onblur="valiaddress()">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">QQ</span>
+                    <input type="text" class="form-control" value="{{ contack.qq }}" name="qq" onblur="valiqqnumber()">
+                </div>
+                <br>
+
+                <hr>
+                <button type="submit" class="btn btn-success ">更新</button>
+                <button type="reset"  class="btn btn-success " onclick="location.href='/'">取消</button>
+                </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

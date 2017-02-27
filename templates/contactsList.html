@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>通讯录列表</title>
+
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="../../static/js/ContactsList.js"></script>
+</head>
+<body background="../../static/img/listBackground.jpg">
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+             <a href="/logout/" type="button" class="btn pull-right">注销</a> <a href="/login/" type="button" class="btn pull-right">登陆</a>
+             <!-- 已经登录则不显示这个按钮(以后再弄) -->
+            <h1>您好</h1>
+
+            <hr>
+
+            <a href="/add/" type="button" class="btn btn-success pull-right">添加</a>
+
+            <table class="table table-striped" align="left">
+                <thead>
+                <tr>
+                    <th class="text-left" style="width:5%">序号</th>
+                    <th class="text-center" style="width:10%">姓名</th>
+                    <th class="text-center" style="width:15%">电话</th>
+                    <th class="text-center" style="width:15%">邮箱</th>
+                    <th class="text-center" style="width:30%">地址</th>
+                    <th class="text-center" style="width:10%">QQ</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contack in informtion %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ contack.name }}</td>
+                        <td>{{ contack.phone }}</td>
+                        <td>{{ contack.email }}</td>
+                        <td>{{ contack.address }}</td>
+                        <td>{{ contack.qq }}</td>
+                        <td class="text-center">
+
+                            <a type="button" class="btn  btn-xs btn-success"  href="/update/?contackid={{ contack.id }}">编辑</a>
+                            <a type="button" class="btn  btn-xs btn-danger" href="/del/?contackid={{ contack.id }}">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>
+</html>
